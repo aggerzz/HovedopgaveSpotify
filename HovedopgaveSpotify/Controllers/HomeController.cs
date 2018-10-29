@@ -22,7 +22,7 @@ namespace HovedopgaveSpotify.Controllers
 
         public ActionResult Index()
         {
-         //   ViewBag.AuthUri = _spotifyAuthViewModel.GetAuthUri();
+            ViewBag.AuthUri = _spotifyAuthViewModel.GetAuthUri();
 
             return View();
         }

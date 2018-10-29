@@ -13,15 +13,14 @@ namespace HovedopgaveSpotify.Services
     {
         public string Token { get; set; }
 
-       /* public SpotifyApi()
-        {
-            return null;
-        }
+        //public SpotifyApi()
+        //{
+        //}
 
-        public SpotifyApi(string token)
-        {
-            Token = token;
-        }*/
+        //public SpotifyApi(string token)
+        //{
+        //    Token = token;
+        //}
 
         public T GetSpotifyType<T>(string url)
         {
