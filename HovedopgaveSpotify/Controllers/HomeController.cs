@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HovedopgaveSpotify.Interfaces;
+using HovedopgaveSpotify.Models;
+using HovedopgaveSpotify.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +11,55 @@ namespace HovedopgaveSpotify.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly SpotifyAuthViewModel _spotifyAuthViewModel;
+        private readonly ISpotifyApi _spotifyApi;
+
+        public HomeController(SpotifyAuthViewModel spotifyAuthViewModel, ISpotifyApi spotifyApi)
+        {            
+            _spotifyAuthViewModel = spotifyAuthViewModel;
+            _spotifyApi = spotifyApi;
+        }
+
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+         //   ViewBag.AuthUri = _spotifyAuthViewModel.GetAuthUri();
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Spotify(string access_token, string error)
         {
-            ViewBag.Message = "Your contact page.";
+            if (error != null || error == "access_denied")
+                return View("Error");
 
-            return View();
+            if (string.IsNullOrEmpty(access_token))
+                return View();
+
+            try
+            {
+                _spotifyApi.Token = access_token;
+                SpotifyService spotifyService = new SpotifyService(_spotifyApi);
+                //Get user_id and user displayName
+                SpotifyUser spotifyUser = spotifyService.GetUserProfile();
+                ViewBag.UserName = spotifyUser.DisplayName;
+
+                //Get user playlists ids
+                Playlists playlists = spotifyService.GetPlaylists(spotifyUser.UserId);
+
+                //Get all tracks from user
+                List<string> tracks = spotifyService.GetTracksAndArtistsFromPlaylists(playlists);
+
+                //Generate the new playlist 
+                List<string> newPlayList = spotifyService.GenerateNewPlaylist(spotifyUser.DisplayName, tracks);
+
+
+                return View(newPlayList);
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
+            
         }
     }
 }

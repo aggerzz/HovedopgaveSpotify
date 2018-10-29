@@ -145,7 +145,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ISpotifyApi.cs" />
+    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\Playlists.cs" />
+    <Compile Include="Models\PublicProfile.cs" />
+    <Compile Include="Models\Scope.cs" />
+    <Compile Include="Models\SpotifyAuthViewModel.cs" />
+    <Compile Include="Models\SpotifyUser.cs" />
+    <Compile Include="Models\StringAttribute.cs" />
+    <Compile Include="Models\Tracks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SpotifyAPI.cs" />
+    <Compile Include="Services\SpotifyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -181,13 +192,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\GenerateNameSortList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
