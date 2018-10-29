@@ -13,7 +13,7 @@ namespace HovedopgaveSpotify.Controllers
     {
         private readonly SpotifyAuthViewModel _spotifyAuthViewModel;
         private readonly ISpotifyApi _spotifyApi;
-
+    
         public HomeController(SpotifyAuthViewModel spotifyAuthViewModel, ISpotifyApi spotifyApi)
         {            
             _spotifyAuthViewModel = spotifyAuthViewModel;
@@ -22,7 +22,7 @@ namespace HovedopgaveSpotify.Controllers
 
         public ActionResult Index()
         {
-         //   ViewBag.AuthUri = _spotifyAuthViewModel.GetAuthUri();
+            ViewBag.AuthUri = _spotifyAuthViewModel.GetAuthUri();
 
             return View();
         }
