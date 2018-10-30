@@ -1,36 +1,32 @@
 ﻿<link href="~/Styles/Index.css" rel="stylesheet" />
 
-
-
-
-<div class="row">
-    <div class="container">
+<div class="container" style="margin-bottom: 10px;">
+    <div class="row">
         <div class="col-6">
             <div class="banner">
                 <img src="~/Images/spotifyHovedopgave.png" style="max-width: 100%;" />
             </div>
+        </div>
+        <div class="col-6">
             <div class="text-body">
                 Denne opgave er lavet af Jurijs og Christoffer som hovedopgave på datamatiker studiet.
-                Vi har lavet en web-app, som minder lidt om en gammeldags jukebox. 
-                Man kan oprette en playliste (ved at logge ind med spotify) og andre kan så se den playliste, 
+                Vi har lavet en web-app, som minder lidt om en gammeldags jukebox.
+                Man kan oprette en playliste (ved at logge ind med spotify) og andre kan så se den playliste,
                 og stemme sange op som de gerne vil havde der skal afspilles.
             </div>
         </div>
     </div>
-            
 </div>
-<div class="row">
-
-    
-    <div class="col-6">
+<div class="container" style="margin-bottom: 10px;">
+    <div class="row">
+        <div class="col-6">
+            <p>
+                <a href=@ViewBag.AuthUri class="btn btn-primary btn-md">Opret en playliste</a>
+                <div class="text-info"> Dette kræver en spotify premium account </div>
+            </p>
+        </div>
         <p>
-            <a href=@ViewBag.AuthUri class="btn btn-primary btn-md">Opret en playliste</a>
-            <div class="text-info"> Dette kræver en spotify premium account </div>
+            <a href=# class="btn btn-primary btn-md">Join en playliste</a>
         </p>
     </div>
-    <p>
-        <a href=# class="btn btn-primary btn-md">Join en playliste</a>
-    </p>
-
-
 </div>
