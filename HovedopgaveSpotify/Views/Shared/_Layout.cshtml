@@ -11,7 +11,11 @@
     @RenderSection("Styles", false)
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
+  
+    <div class="navbar fixed-top">
+        <h1>Spotify hovedopgave &copy;</h1>
+        <p>By Jurijs & Christoffer</p>
+    </div>
         <ul class="breadcrumb">
             <li>
                 <a href="@Url.Action("Index", "Home")"><span class="icon icon-home"></span></a>
@@ -19,10 +23,10 @@
             @*TODO: hide Playlist from Home (make breadcrumb responsive)*@
             <li>Playlist</li>
         </ul>
-    </div>
+    
     <div class="container body-content">
         @RenderBody()
-        
+
         <footer class="modal-footer modal-footer-fixed-bottom">
             <p>&copy; @DateTime.Now.Year - <a href="">Hovedopgave</a> by Jurijs & Christoffer</p>
         </footer>

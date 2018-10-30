@@ -1,7 +1,10 @@
-﻿
-    
-
+﻿.navbar {
+    background-image: url('../Images/Unavngivet.png');
+}
 /* Style the list */
+.breadcrumb {
+    margin-top: 20px;
+}
 ul.breadcrumb {
     padding: 10px 16px;
     list-style: none;

@@ -189,6 +189,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\spotifyHovedopgave.png" />
+    <Content Include="Images\Unavngivet.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
