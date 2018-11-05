@@ -12,23 +12,40 @@
 </script>
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script src="~/Scripts/Spotify/SpotifyWebPlaybackSDK.js"></script>
-
-
 <a class="icon-arrow-left icon-large" href="/Home/"></a>
-    <h2>@ViewBag.UserName Playlist</h2>
-    <div class="col-12"style="text-align: right;">
-        <a class="icon-refresh icon-large" href="#" ></a>
-    </div>
-<table id="Grid" class="table table-striped table-bordered table-hover table-condensed">
-  
-    <thead>
+<h2>@ViewBag.UserName Playlist</h2>
+<table id="Grid" class="table table-dark table-hover table-condensed">
+    <tbody>
         <tr>
-            <th>
-            </th>
-            <th>
-            </th>
+            <td>
+
+                <div class="btn-group col-3">
+                    <button onclick="Play('music.mp3','audio');" class="btn btn-custom"><span title="Play" id="play" class="icon-play aligned"></span></button>
+                    <button onclick="Stop('music.mp3','audio');" class="btn btn-custom"><span title="Stop" id="stop" class="icon-stop aligned"></span></button>
+                    <button onclick="Previous('music.mp3','audio');" class="btn btn-custom"><span title="Previous" id="previous" class="icon-step-backward aligned"></span></button>
+                    <button onclick="Next('music.mp3','audio');" class="btn btn-custom"><span title="Next" id="next" class="icon-step-forward aligned"></span></button>
+                    <button onclick="Backward5('music.mp3','audio');" class="btn btn-custom"><span title="-5 seconds" id="play" class="icon-fast-backward aligned"></span></button>
+                    <button onclick="Forward5('music.mp3','audio');" class="btn btn-custom"><span title="+5 seconds" id="play" class="icon-fast-forward aligned"></span></button>
+                    <button onclick="Backward1('music.mp3','audio');" class="btn btn-custom"><span title="-1 second" id="play" class="icon-chevron-left aligned"></span></button>
+                    <button onclick="Forward1('music.mp3','audio');" class="btn btn-custom"><span title="+1 second" id="play" class="icon-chevron-right aligned"></span></button>
+                    <button onclick="VolumeUp('music.mp3','audio');" class="btn btn-custom"><span title="Volume Up" id="volumeup" class="icon-plus aligned"></span></button>
+                    <button onclick="VolumeDown('music.mp3','audio');" class="btn btn-custom"><span title="Volume Down" id="volumedown" class="icon-minus aligned"></span></button>
+                    <i class="fa fa-spotify fa-2x" style="color: #1db954; margin-left:10px;"></i>
+                </div>
+
+
+            </td>
+            <td>Sang navn</td>
+            <td>Sang kunstner</td>
+            <td>Stemmer</td>
+
         </tr>
-    </thead>
+    </tbody>
+</table>
+<div class="col-12" style="text-align: right;">
+    <a class="icon-refresh icon-large" href="#"></a>
+</div>
+<table id="Grid" class="table table-striped table-bordered table-hover table-condensed">
     <tbody>
         @if (Model != null)
         {
@@ -42,45 +59,24 @@
                         @userName[count++]
                     </td>
                     <td>
-                        @item
+                        <div class="row" style="justify-content: space-between; padding:6px;">
+                            @item
+                            <div>
+                                <a class="icon-thumbs-up" href="#" style="color:green;"></a>
+                                <a class="icon-thumbs-down" href="#" style="color:red;"></a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        Stemmer
                     </td>
                 </tr>
             }
         }
     </tbody>
 </table>
-<table id="Grid" class="table table-dark">
-    <tbody>
-        <tr>
-            <td>
-                <a class="icon-step-backward" href="#"></a>
-                <a class="icon-play-circle" href="#"></a>
-                <a class="icon-pause" href="#"></a>
-                <a class="icon-stop" href="#"></a>
-                <a class="icon-step-forward" href="#"></a>
-            </td>
-            <td>Sang navn</td>
-            <td>Sang kunstner</td>
-            <td>Stemmer</td>
 
-        </tr>
-    </tbody>
-</table>
-<div class="col-md-12">
-    <audio id="audio" preload="auto"></audio>
-    <div class="btn-group">
-        <button onclick="Play('music.mp3','audio');" class="btn btn-custom"><span title="Play" id="play" class="icon-play aligned"></span></button>
-        <button onclick="Stop('music.mp3','audio');" class="btn btn-custom"><span title="Stop" id="stop" class="icon-stop aligned"></span></button>
-        <button onclick="Previous('music.mp3','audio');" class="btn btn-custom"><span title="Previous" id="previous" class="icon-step-backward aligned"></span></button>
-        <button onclick="Next('music.mp3','audio');" class="btn btn-custom"><span title="Next" id="next" class="icon-step-forward aligned"></span></button>
-        <button onclick="Backward5('music.mp3','audio');" class="btn btn-custom"><span title="-5 seconds" id="play" class="icon-fast-backward aligned"></span></button>
-        <button onclick="Forward5('music.mp3','audio');" class="btn btn-custom"><span title="+5 seconds" id="play" class="icon-fast-forward aligned"></span></button>
-        <button onclick="Backward1('music.mp3','audio');" class="btn btn-custom"><span title="-1 second" id="play" class="icon-chevron-left aligned"></span></button>
-        <button onclick="Forward1('music.mp3','audio');" class="btn btn-custom"><span title="+1 second" id="play" class="icon-chevron-right aligned"></span></button>
-        <button onclick="VolumeUp('music.mp3','audio');" class="btn btn-custom"><span title="Volume Up" id="volumeup" class="icon-plus aligned"></span></button>
-        <button onclick="VolumeDown('music.mp3','audio');" class="btn btn-custom"><span title="Volume Down" id="volumedown" class="icon-minus aligned"></span></button>
-    </div>
-</div>
+
 <div>Icons vi kan bruge:</div>
 <div>
     <i class="icon-thumbs-up"></i>

@@ -8,30 +8,39 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="@Url.Content("~/Styles/main.css")" rel="stylesheet" type="text/css" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     @RenderSection("Styles", false)
 </head>
-<body>
-  
-    <div class="navbar fixed-top">
+<body style="margin: 0px; padding: 0px;">
+
+    <div class="navbar">
         <h1>Spotify hovedopgave &copy;</h1>
         <p>By Jurijs & Christoffer</p>
     </div>
-        <ul class="breadcrumb">
-            <li>
-                <a href="@Url.Action("Index", "Home")"><span class="icon icon-home"></span></a>
-            </li>
-            @*TODO: hide Playlist from Home (make breadcrumb responsive)*@
-            <li>Playlist</li>
-        </ul>
-    
+    <ul class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Home")"><span class="icon icon-home"></span></a>
+        </li>
+        @*TODO: hide Playlist from Home (make breadcrumb responsive)*@
+        <li>Playlist</li>
+    </ul>
+
     <div class="container body-content">
         @RenderBody()
-
-        <footer class="modal-footer stick-bottom">
-            <p>&copy; @DateTime.Now.Year - <a href="">Hovedopgave</a> by Jurijs & Christoffer</p>
-        </footer>
     </div>
+    <footer class="footer stick-bottom" style="display: flex;justify-content: space-around;align-items: center;height: 120px;bottom: 0;width: 100%;background-image:url('../Images/Unavngivet.png');">
+        <div class="social"">
+            <a class="icon-facebook-sign" href="#"></a>
+            <a class="icon-instagram" href="#" style="color: #fccc63;"></a>
+            <a class="icon-twitter-sign" href="#" style=" color: #1da1f2;"></a>
+            <a class="icon-github" href="https://github.com/aggerzz/HovedopgaveSpotify" target="_blank" style="color:black;"></a>
+            <a class="icon-youtube-sign" href="#" style="color: #bd081c;"></a>
+            <a class="icon-google-plus" href="#" style="color: #db4437"></a>
+            <a class="fa fa-spotify" href="#" style="color: #1db954"></a>
 
+        </div>
+        <p>&copy; @DateTime.Now.Year - <a href="">Hovedopgave</a> by Jurijs & Christoffer</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

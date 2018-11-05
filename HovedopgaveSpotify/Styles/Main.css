@@ -2,9 +2,10 @@
     background-image: url('../Images/Unavngivet.png');
 }
 
+
 /* Style the list */
 .breadcrumb {
-    margin-top: 20px;
+    margin-top:0px;
 }
 ul.breadcrumb {
     padding: 10px 16px;
@@ -38,4 +39,8 @@ ul.breadcrumb {
             }
 .modal-footer {
     border-top: none;
+    align-items: unset;
+}
+.modal-footer .social {
+    justify-content:flex-start;
 }
