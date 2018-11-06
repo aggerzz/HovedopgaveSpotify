@@ -18,22 +18,26 @@
 </div>
 <div class="container" style="margin-bottom: 10px;">
     <div class="row">
-        <div class="col-6">
+        <div class="col-6" style="text-align:center;">
             <p>
                 <a href=@ViewBag.AuthUri class="btn btn-primary btn-md">Opret en playliste</a>
                 <div class="text-info"> Dette kræver en spotify premium account </div>
             </p>
         </div>
-        <button class="btn btn-primary" id="myBtn">Join playlist</button>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <form action="#">
-                    Indtast koden: <input type="text" name="usrname"><br>
-                    <input type="submit" value="Submit">
-                </form>
+        <div class="col-6" style="text-align:center;">
+            <button class="btn btn-primary" id="myBtn" style="height: 50%; text-align:center;">Join playlist</button>
+        
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <h2>Join en playlist</h2>
+                    <span class="close">&times;</span>
+                    <p>Få koden til din vens playliste for at joine den så du kan stemme på de sange du gerne vil høre</p>
+                    <form action="#">
+                        Indtast koden: <input type="text" name="password"><br>
+                        <input type="submit" value="Join playlist">
+                    </form>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
