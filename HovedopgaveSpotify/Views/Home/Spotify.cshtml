@@ -10,10 +10,11 @@
     if (hashes !== "")
         window.location = hashes;
 </script>
+<script src="~/Scripts/Spotify/Player.js"></script>
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script src="~/Scripts/Spotify/SpotifyWebPlaybackSDK.js"></script>
 <a class="icon-arrow-left icon-large" href="/Home/"></a>
-<h2>@ViewBag.UserName Playlist</h2>
+<h2>@ViewBag.UserName's Playlist</h2>
 <table id="Grid" class="table table-dark table-hover table-condensed">
     <tbody>
         <tr>
@@ -36,7 +37,7 @@
 
             </td>
             <td>Sang navn</td>
-            <td>Sang kunstner</td>
+            <td>Kunstner</td>
             <td>Stemmer</td>
 
         </tr>
@@ -57,10 +58,12 @@
                 <tr>
                     <td>
                         @userName[count++]
+                        
                     </td>
                     <td>
                         <div class="row" style="justify-content: space-between; padding:6px;">
                             @item
+                           
                             <div>
                                 <a class="icon-thumbs-up" href="#" style="color:green;"></a>
                                 <a class="icon-thumbs-down" href="#" style="color:red;"></a>

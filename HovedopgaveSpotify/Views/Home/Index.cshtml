@@ -1,5 +1,4 @@
 ﻿<link href="~/Styles/Index.css" rel="stylesheet" />
-
 <div class="container" style="margin-bottom: 10px;">
     <div class="row">
         <div class="col-6">
@@ -25,8 +24,17 @@
                 <div class="text-info"> Dette kræver en spotify premium account </div>
             </p>
         </div>
-        <p>
-            <a href=# class="btn btn-primary btn-md">Join en playliste</a>
-        </p>
+        <button class="btn btn-primary" id="myBtn">Join playlist</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form action="#">
+                    Indtast koden: <input type="text" name="usrname"><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+        </div>
     </div>
 </div>
+<script src="~/Scripts/Spotify/Modal.js"></script>
