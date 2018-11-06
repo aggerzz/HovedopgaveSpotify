@@ -1,5 +1,6 @@
 ﻿.navbar {
     background-image: url('../Images/Unavngivet.png');
+    font-weight: 900;
 }
 
 
@@ -37,10 +38,17 @@ ul.breadcrumb {
                 color: #01447e;
                 text-decoration: underline;
             }
-.modal-footer {
+.footer {
     border-top: none;
-    align-items: unset;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 120px;
+    bottom: 0;
+    width: 100%;
+    background-image: url(../Images/Unavngivet.png);
 }
-.modal-footer .social {
-    justify-content:flex-start;
-}
+.social {
+        justify-content: flex-start;
+    }

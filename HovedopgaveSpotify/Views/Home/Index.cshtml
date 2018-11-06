@@ -21,8 +21,18 @@
         <div class="col-6" style="text-align:center;">
             <p>
                 <a href=@ViewBag.AuthUri class="btn btn-primary btn-md">Opret en playliste</a>
+
                 <div class="text-info"> Dette kræver en spotify premium account </div>
             </p>
+            <form action="https://accounts.spotify.com/en/authorize" class="no-padding" id="get-access-token">
+                <input type="hidden" name="response_type" value="token">
+                <input type="hidden" name="client_id" value="SpotifyAuthViewModel.clientId">
+                <input type="hidden" name="redirect_uri" data-generate-redirect-uri="true" value="https://accounts.spotify.com/en/authorize?client_id=49d56ad20adc4096a2e082401e817dcf&response_type=token&redirect_uri=http://localhost:53662/Home/Spotify&state=&scope=playlist-modify-private&show_dialog=true">
+                <input type="hidden" name="scope" value="streaming user-read-birthdate user-read-email user-modify-playback-state user-read-private">
+                <input type="hidden" name="show_dialog" value="true">
+
+                <button type="submit" class="btn btn-primary btn-sm">Get Your Web Playback SDK Access Token</button>
+            </form>
         </div>
         <div class="col-6" style="text-align:center;">
             <button class="btn btn-primary" id="myBtn" style="height: 50%; text-align:center;">Join playlist</button>
