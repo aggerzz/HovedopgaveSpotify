@@ -1,4 +1,4 @@
-﻿@model IList<String>
+﻿@model List<SpotifyAPI.Web.Models.FullTrack>
 
 @{
     ViewBag.Title = "GenerateNameSortList";
@@ -50,19 +50,15 @@
     <tbody>
         @if (Model != null)
         {
-            int count = 0;
-            string userName = ViewBag.UserName.ToString().Replace(" ", "");
-
             foreach (var item in @Model)
             {
                 <tr>
                     <td>
-                        @userName[count++]
                         
                     </td>
                     <td>
                         <div class="row" style="justify-content: space-between; padding:6px;">
-                            @item
+                            @item.Artists[0].Name - @item.Name
                            
                             <div>
                                 <a class="icon-thumbs-up" href="#" style="color:green;"></a>

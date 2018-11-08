@@ -1,6 +1,9 @@
 ﻿using HovedopgaveSpotify.Interfaces;
 using HovedopgaveSpotify.Models;
 using HovedopgaveSpotify.Services;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web.Enums;
+using SpotifyAPI.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +16,8 @@ namespace HovedopgaveSpotify.Controllers
     {
         private readonly SpotifyAuthViewModel _spotifyAuthViewModel;
         private readonly ISpotifyApi _spotifyApi;
-    
+        private static SpotifyWebAPI _spotify;
+
         public HomeController(SpotifyAuthViewModel spotifyAuthViewModel, ISpotifyApi spotifyApi)
         {            
             _spotifyAuthViewModel = spotifyAuthViewModel;
@@ -27,7 +31,7 @@ namespace HovedopgaveSpotify.Controllers
             return View();
         }
 
-        public ActionResult Spotify(string access_token, string error)
+        public ActionResult Spotify(string access_token, string error, string searchString)
         {
             if (error != null || error == "access_denied")
                 return View("Error");
@@ -43,17 +47,16 @@ namespace HovedopgaveSpotify.Controllers
                 SpotifyUser spotifyUser = spotifyService.GetUserProfile();
                 ViewBag.UserName = spotifyUser.DisplayName;
 
-                //Get user playlists ids
-                Playlists playlists = spotifyService.GetPlaylists(spotifyUser.UserId);
-
-                //Get all tracks from user
-                List<string> tracks = spotifyService.GetTracksAndArtistsFromPlaylists(playlists);
-
-                //Generate the new playlist 
-                List<string> newPlayList = spotifyService.GenerateNewPlaylist(spotifyUser.DisplayName, tracks);
-
-
-                return View(newPlayList);
+                _spotify = new SpotifyWebAPI()
+                {
+                    //TODO Get token from session
+                    AccessToken = access_token,
+                    TokenType = "Bearer"
+                };
+                //TODO SearchQuery i stedet for string "Eminem"
+                SearchItem item = _spotify.SearchItems("Eminem", SearchType.Track);
+                List<SpotifyAPI.Web.Models.FullTrack> TrackList = item.Tracks.Items.ToList();
+                return View(TrackList);
             }
             catch (Exception)
             {
