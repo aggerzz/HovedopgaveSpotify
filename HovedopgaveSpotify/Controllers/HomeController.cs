@@ -64,5 +64,11 @@ namespace HovedopgaveSpotify.Controllers
             }
             
         }
+        public ActionResult Play(string access_token, string spotifyUri)
+        {
+            
+            ErrorResponse error = _spotify.ResumePlayback(uris: new List<string> { spotifyUri });
+            return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
+        }
     }
 }
