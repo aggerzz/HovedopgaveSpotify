@@ -3,32 +3,33 @@
 @{
     ViewBag.Title = "GenerateNameSortList";
 }
-<script type = "text/javascript"  
-src = "https://code.jquery.com/jquery-1.12.4.js" ></script>
+<script type="text/javascript"
+        src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <script type="text/javascript" language="javascript">
     var hashes = window.location.hash;
     hashes = hashes.replace('#', '?');
     if (hashes !== "")
         window.location = hashes;
-    </script>
+</script>
 <script type="text/javascript" language="javascript">
     $(document).ready(function () {
-        $("a[name=tab]").on("click", function () {
-            
+        $("#searchBox").on('input', function () {
             $.ajax(
                 {
-                    type: "POST", //HTTP POST Method
-                    url: "Play", // Controller/View 
+                    url: "@Url.Action("Search")", // Controller/View
                     data: { //Passing data
-                        spotifyUri: $(this).data("index"), //Reading text box values using Jquery
+                        searchString: $("#searchBox").val(), //Reading text box values using Jquery
 
-                    }
-                });
-            console.log("hey");
+                },
+                success: function (data) {
+                    $("#list-result").html(data);
+                }
+            });
+            console.log("yo");
+
         });
     });
-
 </script>
 <script src="~/Scripts/Spotify/Player.js"></script>
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
@@ -62,38 +63,20 @@ src = "https://code.jquery.com/jquery-1.12.4.js" ></script>
 
         </tr>
     </tbody>
+
 </table>
 <div class="col-12" style="text-align: right;">
     <a class="icon-refresh icon-large" href="#"></a>
 </div>
-<table id="Grid" class="table table-striped table-bordered table-hover table-condensed">
-    <tbody>
-        @if (Model != null)
-        {
-            foreach (var item in @Model)
-            {
-                <tr>
-                    <td></td>
-                    <td>
-                        <div class="row" id="song" style="justify-content: space-between; padding:6px;">
-                            <a id="tab" data-index="@item.Uri" name="tab" href="#">@item.Artists[0].Name - @item.Name</a>
-
-                            <div>
-                                <a class="icon-thumbs-up" href="#" style="color:green;"></a>
-                                <a class="icon-thumbs-down" href="#" style="color:red;"></a>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        Stemmer
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
-
-
+<div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+    </div>
+    <input type="text" id="searchBox" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+</div>
+<div id="list-result">
+    @Html.Partial("searchResult") zazaza
+</div>
 <div>Icons vi kan bruge:</div>
 <div>
     <i class="icon-thumbs-up"></i>

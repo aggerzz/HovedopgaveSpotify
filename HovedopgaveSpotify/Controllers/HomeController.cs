@@ -53,10 +53,7 @@ namespace HovedopgaveSpotify.Controllers
                     AccessToken = access_token,
                     TokenType = "Bearer"
                 };
-                //TODO SearchQuery i stedet for string "Eminem"
-                SearchItem item = _spotify.SearchItems("Eminem", SearchType.Track);
-                List<SpotifyAPI.Web.Models.FullTrack> TrackList = item.Tracks.Items.ToList();
-                return View(TrackList);
+                return View();
             }
             catch (Exception)
             {
@@ -68,7 +65,20 @@ namespace HovedopgaveSpotify.Controllers
         {
             
             ErrorResponse error = _spotify.ResumePlayback(uris: new List<string> { spotifyUri });
-            return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
+            return Json(spotifyUri, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult Search(string access_token, string searchString) {
+            //TODO SearchQuery i stedet for string "Eminem"
+            SearchItem item = _spotify.SearchItems(searchString, SearchType.Track);
+            List<SpotifyAPI.Web.Models.FullTrack> searchResult = new List<SpotifyAPI.Web.Models.FullTrack>();
+
+            if (!string.IsNullOrEmpty(searchString)) {
+            searchResult = item.Tracks.Items.ToList();
+
+            }
+            return PartialView("searchResult", searchResult);
         }
     }
 }
