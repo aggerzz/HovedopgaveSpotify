@@ -27,6 +27,16 @@
     // Ready
     player.addListener('ready', ({ device_id }) => {
         console.log('Ready with Device ID', device_id);
+
+        $.ajax(
+            {
+                type: "POST", //HTTP POST Method
+                url: "Transfer", // Controller/View
+                data: { //Passing data
+                    deviceID: device_id, //Reading text box values using Jquery
+                    access_token: access_token,
+                }
+            });
     });
 
     // Not Ready

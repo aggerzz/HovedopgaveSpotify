@@ -72,7 +72,12 @@ namespace HovedopgaveSpotify.Controllers
             ErrorResponse error = _spotify.ResumePlayback(uris: new List<string> { spotifyUri });
             return Json(spotifyUri, JsonRequestBehavior.AllowGet);
         }
+        public void Transfer(string access_token, string deviceID)
+        {
 
+            ErrorResponse error = _spotify.TransferPlayback(deviceID, true);
+
+        }//ready to see some masterpiece?yeah
         [HttpGet]
         public ActionResult Search(string access_token, string searchString) {
             //TODO SearchQuery i stedet for string "Eminem"
