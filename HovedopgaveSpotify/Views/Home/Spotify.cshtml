@@ -57,8 +57,9 @@
 
 
             </td>
-            <td>Sang navn</td>
-            <td>Kunstner</td>
+            <td>
+                @ViewBag.song
+            </td>
             <td>Stemmer</td>
 
         </tr>
@@ -75,7 +76,7 @@
     <input type="text" id="searchBox" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 </div>
 <div id="list-result">
-    @Html.Partial("searchResult") zazaza
+    @Html.Partial("searchResult") 
 </div>
 <div>Icons vi kan bruge:</div>
 <div>

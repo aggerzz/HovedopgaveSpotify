@@ -47,12 +47,17 @@ namespace HovedopgaveSpotify.Controllers
                 SpotifyUser spotifyUser = spotifyService.GetUserProfile();
                 ViewBag.UserName = spotifyUser.DisplayName;
 
+
                 _spotify = new SpotifyWebAPI()
                 {
                     //TODO Get token from session
                     AccessToken = access_token,
                     TokenType = "Bearer"
-                };
+       };         
+                PlaybackContext context = _spotify.GetPlayingTrack();
+                if (context.Item != null)
+                    ViewBag.song = context.Item.Artists[0].Name + " - " +context.Item.Name;
+
                 return View();
             }
             catch (Exception)

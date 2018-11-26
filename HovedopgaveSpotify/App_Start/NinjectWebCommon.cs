@@ -81,7 +81,7 @@ namespace HovedopgaveSpotify.App_Start
                 .WithConstructorArgument("clientId", clientId)
                 .WithConstructorArgument("redirectUri", uriCallback)
                 .WithConstructorArgument("state", "")
-                .WithConstructorArgument("scope", Scope.PLAYLIST_MODIFY_PRIVATE);
+                .WithConstructorArgument("scope", Scope.STREAMING);
         }        
     }
 }
