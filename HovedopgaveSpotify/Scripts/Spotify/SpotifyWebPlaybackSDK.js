@@ -11,9 +11,19 @@
     player.addListener('account_error', ({ message }) => { console.error(message); });
     player.addListener('playback_error', ({ message }) => { console.error(message); });
 
-    // Playback status updates
-    player.addListener('player_state_changed', state => { console.log(state); });
+    // Playback status updates'
+  
+    player.addListener('player_state_changed', state => { console.log(state) });
 
+    player.addListener('player_state_changed', ({
+  position,
+        duration,
+        track_window: { current_track }
+    }) => {
+        console.log('Currently Playing', current_track.artists["0"].name, " - ", current_track.name);
+        console.log('Position in Song', position);
+        console.log('Duration of Song', duration);
+    });
     // Ready
     player.addListener('ready', ({ device_id }) => {
         console.log('Ready with Device ID', device_id);

@@ -17,7 +17,7 @@ namespace HovedopgaveSpotify.Models
         PLAYLIST_MODIFY_PRIVATE = 4,
         [StringAttribute("playlist-read-private")]
         PLAYLIST_READ_PRIVATE = 8,
-        [StringAttribute("user-read-currently-playing")]
+        [String("user-read-currently-playing user-modify-playback-state user-read-currently-playing")]
         STREAMING = 16,
         [StringAttribute("user-read-private")]
         USER_READ_PRIVATE = 32,
