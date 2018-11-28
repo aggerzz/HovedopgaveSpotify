@@ -77,7 +77,7 @@ namespace HovedopgaveSpotify.Controllers
 
             ErrorResponse error = _spotify.TransferPlayback(deviceID, true);
 
-        }//ready to see some masterpiece?yeah
+        }
         [HttpGet]
         public ActionResult Search(string access_token, string searchString) {
             //TODO SearchQuery i stedet for string "Eminem"
